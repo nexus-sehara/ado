@@ -1,80 +1,96 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="sr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Promo - Akcija!</title>
 
-     <!-- Facebook Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Promo – 48h Test • Akcija €60 / 2 uređaja">
-    <meta property="og:description" content="1500+ TV kanala,30000 filmova, serije, sport. Besplatan test 48h. Kontakt +387 60 300 8445.">
-    <meta property="og:url" content="#">
-    <meta property="og:image" content="fb-cover.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="Promo Akcija €60">
+    <!-- Facebook Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Promo – 48h Test • Akcija €60 / 2 uređaja"
+    />
+    <meta
+      property="og:description"
+      content="1500+ TV kanala,30000 filmova, serije, sport. Besplatan test 48h. Kontakt +387 60 300 8445."
+    />
+    <meta property="og:url" content="#" />
+    <meta property="og:image" content="./fb-cover.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Promo Akcija €60" />
 
     <!-- Twitter (optional) -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Promo! 48h Test • Akcija €60 / 2 uređaja">
-    <meta name="twitter:description" content="1000+ TV kanala, filmovi, serije, sport. Besplatan test 48h. Kontakt +387 67 14 79 222.">
-    <meta name="twitter:image" content="fb-cover.png">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Promo! 48h Test • Akcija €60 / 2 uređaja"
+    />
+    <meta
+      name="twitter:description"
+      content="1000+ TV kanala, filmovi, serije, sport. Besplatan test 48h. Kontakt +387 67 14 79 222."
+    />
+    <meta name="twitter:image" content="./fb-cover.png" />
 
-    
     <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Alpine.js -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'lime-accent': '#D6F12B',
-                    },
-                    fontFamily: {
-                        'inter': ['Inter', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
-    
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .hero-bg {
-            background-image: url('header-bg-image.png');
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .noise-texture {
-            background-image: url('Swatch-header-noise.png');
-            background-repeat: repeat;
-        }
-        .druga-sekcija {
-         margin-top: -20rem;
-        }
-        
-        [x-cloak] { 
-            display: none !important; 
-        }
-    </style>
-</head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap"
+      rel="stylesheet"
+    />
 
-<body class="bg-[#0c0c0c] text-white" x-data="{ 
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "lime-accent": "#D6F12B",
+            },
+            fontFamily: {
+              inter: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+
+      .hero-bg {
+        background-image: url("header-bg-image.png");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .noise-texture {
+        background-image: url("Swatch-header-noise.png");
+        background-repeat: repeat;
+      }
+      .druga-sekcija {
+        margin-top: -20rem;
+      }
+
+      [x-cloak] {
+        display: none !important;
+      }
+    </style>
+  </head>
+
+  <body
+    class="bg-[#0c0c0c] text-white"
+    x-data="{ 
     modalOpen: false,
     activeCategory: null,
     channels: {
@@ -87,233 +103,357 @@
         'Muzika': ['MTV HD', 'VH1 HD', 'Mezzo', 'Trace Urban', 'CMC'],
         'Regionalni': ['BHT 1', 'FTV', 'RTRS', 'OBN', 'Hayat TV', 'Pink BH', 'Nova BH', 'N1']
     }
-}">
-    <!-- Channel List Modal -->
-    <div x-show="modalOpen" 
-         x-cloak
-         @keydown.escape.window="modalOpen = false"
-         class="fixed inset-0 z-50 overflow-y-auto" 
-         style="display: none;">
-        <!-- Backdrop -->
-        <div class="fixed inset-0 bg-black/80 backdrop-blur-sm" @click="modalOpen = false"></div>
-        
-        <!-- Modal Content -->
-        <div class="relative min-h-screen flex items-center justify-center p-4">
-            <div @click.away="modalOpen = false" 
-                 class="relative bg-[#151515] rounded-2xl max-w-4xl w-full max-h-[80vh] overflow-hidden border border-white/10 shadow-2xl"
-                 x-transition:enter="transition ease-out duration-300"
-                 x-transition:enter-start="opacity-0 scale-95"
-                 x-transition:enter-end="opacity-100 scale-100"
-                 x-transition:leave="transition ease-in duration-200"
-                 x-transition:leave-start="opacity-100 scale-100"
-                 x-transition:leave-end="opacity-0 scale-95">
-                
-                <!-- Modal Header -->
-                <div class="sticky top-0 bg-[#151515] border-b border-white/10 px-8 py-6 flex items-center justify-between z-10">
-                    <h2 class="text-3xl font-bold text-lime-accent">Lista Kanala</h2>
-                    <button @click="modalOpen = false" class="text-gray-400 hover:text-white transition">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+}"
+  >
+    <div
+      x-show="modalOpen"
+      x-cloak
+      @keydown.escape.window="modalOpen = false"
+      class="fixed inset-0 z-50 overflow-y-auto"
+      style="display: none"
+    >
+      <div
+        class="fixed inset-0 bg-black/80 backdrop-blur-sm"
+        @click="modalOpen = false"
+      ></div>
+
+      <div class="relative min-h-screen flex items-center justify-center p-4">
+        <div
+          @click.away="modalOpen = false"
+          class="relative bg-[#151515] rounded-2xl max-w-4xl w-full max-h-[80vh] overflow-hidden border border-white/10 shadow-2xl"
+          x-transition:enter="transition ease-out duration-300"
+          x-transition:enter-start="opacity-0 scale-95"
+          x-transition:enter-end="opacity-100 scale-100"
+          x-transition:leave="transition ease-in duration-200"
+          x-transition:leave-start="opacity-100 scale-100"
+          x-transition:leave-end="opacity-0 scale-95"
+        >
+          <div
+            class="sticky top-0 bg-[#151515] border-b border-white/10 px-8 py-6 flex items-center justify-between z-10"
+          >
+            <h2 class="text-3xl font-bold text-lime-accent">Lista Kanala</h2>
+            <button
+              @click="modalOpen = false"
+              class="text-gray-400 hover:text-white transition"
+            >
+              <svg
+                class="w-8 h-8"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <div class="px-8 py-6 overflow-y-auto max-h-[calc(80vh-100px)]">
+            <template
+              x-for="(channelList, category) in channels"
+              :key="category"
+            >
+              <div class="mb-4">
+                <button
+                  @click="activeCategory = activeCategory === category ? null : category"
+                  class="w-full flex items-center justify-between bg-[#1a1a1a] hover:bg-[#222] px-6 py-4 rounded-lg transition-all"
+                >
+                  <span class="text-lg font-semibold" x-text="category"></span>
+                  <svg
+                    class="w-6 h-6 transition-transform duration-200"
+                    :class="{ 'rotate-180': activeCategory === category }"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+
+                <div
+                  x-show="activeCategory === category"
+                  x-collapse
+                  class="mt-2 bg-[#0c0c0c] rounded-lg p-4"
+                >
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <template x-for="channel in channelList" :key="channel">
+                      <div
+                        class="flex items-center gap-3 px-4 py-2 bg-[#151515] rounded-lg hover:bg-[#1a1a1a] transition"
+                      >
+                        <svg
+                          class="w-5 h-5 text-lime-accent flex-shrink-0"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                          />
                         </svg>
-                    </button>
-                </div>
-                
-                <!-- Modal Body - Accordion -->
-                <div class="px-8 py-6 overflow-y-auto max-h-[calc(80vh-100px)]">
-                    <template x-for="(channelList, category) in channels" :key="category">
-                        <div class="mb-4">
-                            <button @click="activeCategory = activeCategory === category ? null : category"
-                                    class="w-full flex items-center justify-between bg-[#1a1a1a] hover:bg-[#222] px-6 py-4 rounded-lg transition-all">
-                                <span class="text-lg font-semibold" x-text="category"></span>
-                                <svg class="w-6 h-6 transition-transform duration-200" 
-                                     :class="{ 'rotate-180': activeCategory === category }"
-                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                                </svg>
-                            </button>
-                            
-                            <div x-show="activeCategory === category" 
-                                 x-collapse
-                                 class="mt-2 bg-[#0c0c0c] rounded-lg p-4">
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                                    <template x-for="channel in channelList" :key="channel">
-                                        <div class="flex items-center gap-3 px-4 py-2 bg-[#151515] rounded-lg hover:bg-[#1a1a1a] transition">
-                                            <svg class="w-5 h-5 text-lime-accent flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                                <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/>
-                                            </svg>
-                                            <span class="text-gray-300" x-text="channel"></span>
-                                        </div>
-                                    </template>
-                                </div>
-                            </div>
-                        </div>
+                        <span class="text-gray-300" x-text="channel"></span>
+                      </div>
                     </template>
+                  </div>
                 </div>
-            </div>
+              </div>
+            </template>
+          </div>
         </div>
+      </div>
     </div>
-    <!-- Hero Section -->
+
     <section class="relative overflow-hidden">
-        <!-- Background Image -->
-        <div class="absolute inset-0 hero-bg opacity-80 z-0"></div>
-        
-        <!-- Noise Overlay -->
-        <div class="absolute inset-0 noise-texture opacity-15 z-10 pointer-events-none"></div>
-        
-        <!-- Gradient Overlay -->
-        <div class="absolute inset-0 bg-gradient-radial from-transparent via-[#0c0c0c]/50 to-[#0c0c0c] z-20"></div>
-        
-        <!-- Promo Badge (Outside Container) -->
-        <div class="absolute top-12 right-6 bg-lime-accent text-black px-20 py-4 font-black text-lg uppercase transform rotate-[35deg] translate-x-[30%] translate-y-[-20%] shadow-lg shadow-lime-accent/30 z-50">
-            Besplatan test 24h
-        </div>
-        
-        <!-- Content Container -->
-        <div class="relative z-30 max-w-[1440px] mx-auto px-6 sm:px-10 py-12 sm:py-20 mt-6 md:mt-24">
-            <!-- Logo Pill -->
-            <a href="#" class="inline-block bg-white text-black px-5 py-1.5 rounded-full font-black text-xs uppercase tracking-tight mb-12">
-                Promo ponuda!
+      <div class="absolute inset-0 hero-bg opacity-80 z-0"></div>
+
+      <div
+        class="absolute inset-0 noise-texture opacity-15 z-10 pointer-events-none"
+      ></div>
+
+      <div
+        class="absolute inset-0 bg-gradient-radial from-transparent via-[#0c0c0c]/50 to-[#0c0c0c] z-20"
+      ></div>
+
+      <div
+        class="absolute top-12 right-6 bg-lime-accent text-black px-20 py-4 font-black text-lg uppercase transform rotate-[35deg] translate-x-[30%] translate-y-[-20%] shadow-lg shadow-lime-accent/30 z-50"
+      >
+        Besplatan test 24h
+      </div>
+
+      <div
+        class="relative z-30 max-w-[1440px] mx-auto px-6 sm:px-10 py-12 sm:py-20 mt-6 md:mt-24"
+      >
+        <a
+          href="#"
+          class="inline-block bg-white text-black px-5 py-1.5 rounded-full font-black text-xs uppercase tracking-tight mb-12"
+        >
+          Promo ponuda!
+        </a>
+
+        <div class="max-w-6xl">
+          <h1 class="text-6xl lg:text-9xl font-medium leading-tight mb-6">
+            Akcija: 12 mjeseci <br />
+            <span class="text-lime-accent">€60</span> / 2 uređaja
+          </h1>
+
+          <div class="flex flex-wrap gap-6 text-base md:text-2xl mb-10 mt-8">
+            <span class="flex items-center gap-2">
+              <span class="text-lime-accent font-black">✓</span> 1500 Kanala
+            </span>
+            <span class="flex items-center gap-2">
+              <span class="text-lime-accent font-black">✓</span> 30 000 Filmova
+            </span>
+            <span class="flex items-center gap-2">
+              <span class="text-lime-accent font-black">✓</span> Besplatan test
+            </span>
+            <span class="flex items-center gap-2">
+              <span class="text-lime-accent font-black">✓</span>Vraćanja unazad
+              do 7 dana
+            </span>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-4 mt-16">
+            <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+              <a
+                href="https://wa.me/387603008445?text=Pozdrav%2C%20Zelio%20bih%20zatražiti%20aktivaciju%2048-satnog%20testnog%20perioda."
+                target="_blank"
+                class="bg-lime-accent text-black px-8 py-5 rounded-full font-bold text-center hover:shadow-lg hover:shadow-lime-accent/40 transition-all hover:-translate-y-0.5"
+              >
+                Zatraži besplatan test 48h
+              </a>
+              <div class="flex gap-3 justify-center sm:justify-start">
+                <a
+                  href="https://wa.me/387603008445?text=Pozdrav%2C%20Zelio%20bih%20zatražiti%20aktivaciju%2048-satnog%20testnog%20perioda."
+                  target="_blank"
+                  class="bg-[#25D366] hover:bg-[#20BA5A] text-white w-14 h-14 rounded-full flex items-center justify-center transition-all hover:shadow-lg hover:-translate-y-0.5"
+                  title="WhatsApp"
+                >
+                  <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="viber://contact?number=%2B387603008445&text=Pozdrav%2C%20Zelio%20bih%20zatražiti%20aktivaciju%2048-satnog%20testnog%20perioda."
+                  target="_blank"
+                  class="bg-[#7360F2] hover:bg-[#665AC1] text-white w-14 h-14 rounded-full flex items-center justify-center transition-all hover:shadow-lg hover:-translate-y-0.5"
+                  title="Viber"
+                >
+                  <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M11.398.002C9.473.028 5.331.344 3.014 2.467 1.294 4.177.693 6.698.623 9.82c-.06 3.11-.13 8.95 5.5 10.541v2.42s-.038.97.602 1.17c.79.25 1.24-.499 1.99-1.299l1.4-1.58c3.85.32 6.8-.419 7.14-.529.78-.25 5.181-.811 5.901-6.652.74-6.031-.36-9.831-2.34-11.551l-.01-.002c-.6-.55-3-2.3-8.37-2.32 0 0-.396-.025-1.038-.016zm.067 1.697c.545-.003.88.02.88.02 4.54.01 6.711 1.38 7.221 1.84 1.67 1.429 2.528 4.856 1.9 9.892-.6 4.88-4.17 5.19-4.83 5.4-.28.09-2.88.73-6.152.52 0 0-2.439 2.941-3.199 3.701-.12.13-.26.17-.35.15-.13-.03-.17-.19-.16-.41l.02-4.019c-4.771-1.32-4.491-6.302-4.441-8.902.06-2.6.55-4.732 2-6.172 1.957-1.77 5.475-2.01 7.11-2.02zm.36 2.6a.299.299 0 00-.3.299.3.3 0 00.3.3 5.631 5.631 0 014.03 1.59 5.402 5.402 0 011.68 3.989.3.3 0 00.3.3.3.3 0 00.3-.3 5.994 5.994 0 00-1.86-4.409 6.23 6.23 0 00-4.45-1.769zm-3.398.95a.843.843 0 00-.509.19c-.366.256-.73.579-1.055.885-.025.024-.037.037-.05.05a1.426 1.426 0 00-.335 1.002c.05.582.326 1.381.78 2.45.004.01.01.018.013.028.49 1.146 1.333 2.51 2.553 3.802 1.223 1.295 2.61 2.364 4.06 3.087l.02.01c1.475.715 2.673 1.029 3.532 1.09.476.033.808-.135 1.009-.346 0 0 .232-.197.581-.622.333-.406.7-.894.849-1.103a.554.554 0 00-.03-.738l-1.655-1.655c-.246-.246-.578-.2-.578-.2-.24.04-.664.32-1.029.556-.4.258-.95.466-1.302.466-.154 0-.28-.033-.379-.098-1.426-.934-2.654-1.964-3.622-2.865-.968-.9-2.014-2.114-2.964-3.538-.068-.102-.104-.232-.104-.393 0-.345.206-.89.461-1.289.233-.364.51-.786.549-1.025 0 0 .046-.332-.2-.578L9.178 5.588a.38.38 0 00-.251-.089zm3.418.95a.3.3 0 00-.3.3.3.3 0 00.3.299 3.73 3.73 0 012.65 1.05 3.56 3.56 0 011.12 2.65.3.3 0 00.3.3.3.3 0 00.3-.3 4.16 4.16 0 00-1.31-3.103 4.364 4.364 0 00-3.06-1.196zm.35 2.097a.3.3 0 00-.3.3.3.3 0 00.3.3 1.876 1.876 0 011.322.528c.352.35.556.831.556 1.33a.3.3 0 00.3.299.3.3 0 00.3-.3 2.463 2.463 0 00-.73-1.752 2.61 2.61 0 00-1.748-.705z"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <a
+              href="#"
+              @click.prevent="modalOpen = true"
+              class="bg-white text-black px-8 py-5 rounded-full font-bold text-center hover:bg-gray-100 transition-all hover:-translate-y-0.5 w-full sm:w-auto"
+            >
+              Lista Kanala
             </a>
-            
-            <!-- Hero Content -->
-            <div class="max-w-6xl">
-                <h1 class="text-6xl lg:text-9xl font-medium leading-tight mb-6">
-                    Akcija: 12 mjeseci <br>
-                    <span class="text-lime-accent">€60</span> / 2 uređaja
-                </h1>
-                
-                <div class="flex flex-wrap gap-6 text-base md:text-2xl mb-10 mt-8">
-                    <span class="flex items-center gap-2">
-                        <span class="text-lime-accent font-black">✓</span> 1500 Kanala
-                    </span>
-                    <span class="flex items-center gap-2">
-                        <span class="text-lime-accent font-black">✓</span> 30 000 Filmova
-                    </span>
-                    <span class="flex items-center gap-2">
-                        <span class="text-lime-accent font-black">✓</span> Besplatan test
-                    </span>
-                     <span class="flex items-center gap-2">
-                        <span class="text-lime-accent font-black">✓</span>Vraćanja unazad do 7 dana
-                    </span>
-                </div>
-                
-                <div class="flex flex-col sm:flex-row gap-4 mt-16">
-                    <!-- Main CTA Button with Messaging Icons -->
-                    <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-                        <a href="https://wa.me/387603008445?text=Pozdrav%2C%20Zelio%20bih%20zatražiti%20aktivaciju%2048-satnog%20testnog%20perioda." target="_blank" class="bg-lime-accent text-black px-8 py-5 rounded-full font-bold text-center hover:shadow-lg hover:shadow-lime-accent/40 transition-all hover:-translate-y-0.5">
-                            Zatraži besplatan test 48h
-                        </a>
-                        <div class="flex gap-3 justify-center sm:justify-start">
-                            <a href="https://wa.me/387603008445?text=Pozdrav%2C%20Zelio%20bih%20zatražiti%20aktivaciju%2048-satnog%20testnog%20perioda." target="_blank" class="bg-[#25D366] hover:bg-[#20BA5A] text-white w-14 h-14 rounded-full flex items-center justify-center transition-all hover:shadow-lg hover:-translate-y-0.5" title="WhatsApp">
-                                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                                </svg>
-                            </a>
-                            <a href="viber://contact?number=%2B387603008445&text=Pozdrav%2C%20Zelio%20bih%20zatražiti%20aktivaciju%2048-satnog%20testnog%20perioda." target="_blank" class="bg-[#7360F2] hover:bg-[#665AC1] text-white w-14 h-14 rounded-full flex items-center justify-center transition-all hover:shadow-lg hover:-translate-y-0.5" title="Viber">
-                                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M11.398.002C9.473.028 5.331.344 3.014 2.467 1.294 4.177.693 6.698.623 9.82c-.06 3.11-.13 8.95 5.5 10.541v2.42s-.038.97.602 1.17c.79.25 1.24-.499 1.99-1.299l1.4-1.58c3.85.32 6.8-.419 7.14-.529.78-.25 5.181-.811 5.901-6.652.74-6.031-.36-9.831-2.34-11.551l-.01-.002c-.6-.55-3-2.3-8.37-2.32 0 0-.396-.025-1.038-.016zm.067 1.697c.545-.003.88.02.88.02 4.54.01 6.711 1.38 7.221 1.84 1.67 1.429 2.528 4.856 1.9 9.892-.6 4.88-4.17 5.19-4.83 5.4-.28.09-2.88.73-6.152.52 0 0-2.439 2.941-3.199 3.701-.12.13-.26.17-.35.15-.13-.03-.17-.19-.16-.41l.02-4.019c-4.771-1.32-4.491-6.302-4.441-8.902.06-2.6.55-4.732 2-6.172 1.957-1.77 5.475-2.01 7.11-2.02zm.36 2.6a.299.299 0 00-.3.299.3.3 0 00.3.3 5.631 5.631 0 014.03 1.59 5.402 5.402 0 011.68 3.989.3.3 0 00.3.3.3.3 0 00.3-.3 5.994 5.994 0 00-1.86-4.409 6.23 6.23 0 00-4.45-1.769zm-3.398.95a.843.843 0 00-.509.19c-.366.256-.73.579-1.055.885-.025.024-.037.037-.05.05a1.426 1.426 0 00-.335 1.002c.05.582.326 1.381.78 2.45.004.01.01.018.013.028.49 1.146 1.333 2.51 2.553 3.802 1.223 1.295 2.61 2.364 4.06 3.087l.02.01c1.475.715 2.673 1.029 3.532 1.09.476.033.808-.135 1.009-.346 0 0 .232-.197.581-.622.333-.406.7-.894.849-1.103a.554.554 0 00-.03-.738l-1.655-1.655c-.246-.246-.578-.2-.578-.2-.24.04-.664.32-1.029.556-.4.258-.95.466-1.302.466-.154 0-.28-.033-.379-.098-1.426-.934-2.654-1.964-3.622-2.865-.968-.9-2.014-2.114-2.964-3.538-.068-.102-.104-.232-.104-.393 0-.345.206-.89.461-1.289.233-.364.51-.786.549-1.025 0 0 .046-.332-.2-.578L9.178 5.588a.38.38 0 00-.251-.089zm3.418.95a.3.3 0 00-.3.3.3.3 0 00.3.299 3.73 3.73 0 012.65 1.05 3.56 3.56 0 011.12 2.65.3.3 0 00.3.3.3.3 0 00.3-.3 4.16 4.16 0 00-1.31-3.103 4.364 4.364 0 00-3.06-1.196zm.35 2.097a.3.3 0 00-.3.3.3.3 0 00.3.3 1.876 1.876 0 011.322.528c.352.35.556.831.556 1.33a.3.3 0 00.3.299.3.3 0 00.3-.3 2.463 2.463 0 00-.73-1.752 2.61 2.61 0 00-1.748-.705z"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <!-- Lista Kanala Button -->
-                    <a href="#" @click.prevent="modalOpen = true" class="bg-white text-black px-8 py-5 rounded-full font-bold text-center hover:bg-gray-100 transition-all hover:-translate-y-0.5 w-full sm:w-auto">
-                        Lista Kanala
-                    </a>
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Cinema Grid Image -->
     <section class="-mt-36">
-        <img src="image-srednja-slika.png" alt="Cinema Grid" class="w-full block brightness-75">
+      <img
+        src="image-srednja-slika.png"
+        alt="Cinema Grid"
+        class="w-full block brightness-75"
+      />
     </section>
 
-    <!-- Stats Section -->
-    <section class="mt-0 md:mt-[-20rem] pb-20 max-w-[1440px] mx-auto px-10 relative z-10">
-        <h2 class="text-5xl md:text-6xl font-medium mb-4">20 000 Zadovoljnih korisnika!</h2>
-        <p class="text-gray-300 text-2xl max-w-3xl">
-            Doživite preko 1.500 kanala u HD kvalitetu, uključujući sve bosanskohercegovačke kanale i međunarodne favorite.
-        </p>
+    <section
+      class="mt-0 md:mt-[-20rem] pb-20 max-w-[1440px] mx-auto px-10 relative z-10"
+    >
+      <h2 class="text-5xl md:text-6xl font-medium mb-4">
+        20 000 Zadovoljnih korisnika!
+      </h2>
+      <p class="text-gray-300 text-2xl max-w-3xl">
+        Doživite preko 1.500 kanala u HD kvalitetu, uključujući sve
+        bosanskohercegovačke kanale i međunarodne favorite.
+      </p>
     </section>
 
-    <!-- Pricing Section -->
     <section class="pb-24 max-w-[1440px] mx-auto px-10 relative z-10">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- 12 Months Card -->
-            <div class="bg-[#151515] rounded-2xl p-12 flex flex-col border border-white/10">
-                <h3 class="text-2xl font-medium tracking-widest text-gray-100 uppercase mb-6">12 MJESECI</h3>
-                
-                <ul class="text-gray-400 space-y-2 mb-8 flex-grow">
-                    <li>Kvalitet 8K / 4K / Ultra HD</li>
-                    <li>1500 kanala sa 30000+ novih filmova</li>
-                    <li>Sportski kanali ArenaSport, Sport Klub, X</li>
-                    <li>Dokumentarni, Dječiji kanali.</li>
-                </ul>
-                
-                <div class="flex items-baseline gap-2 mb-8">
-                    <span class="text-7xl font-medium">€60</span>
-                    <span class="text-gray-400">/ 1 godina - 2 uređaja</span>
-                </div>
-                
-                <div class="flex gap-3">
-                    <a href="#" @click.prevent="modalOpen = true" class="bg-lime-accent text-black px-4 py-3 rounded-lg font-bold text-sm text-center hover:shadow-lg hover:shadow-lime-accent/40 transition-all hover:-translate-y-0.5 flex-1">
-                        Lista kanala
-                    </a>
-                    <a href="https://wa.me/387603008445?text=Pozdrav%2C%20Zelio%20bih%20zatražiti%20aktivaciju%2048-satnog%20testnog%20perioda." target="_blank" class="bg-[#25D366] hover:bg-[#20BA5A] text-white w-12 h-12 rounded-lg flex items-center justify-center transition-all hover:shadow-lg" title="WhatsApp">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                        </svg>
-                    </a>
-                    <a href="viber://contact?number=%2B387603008445&text=Pozdrav%2C%20Zelio%20bih%20zatražiti%20aktivaciju%2048-satnog%20testnog%20perioda." target="_blank" class="bg-[#7360F2] hover:bg-[#665AC1] text-white w-12 h-12 rounded-lg flex items-center justify-center transition-all hover:shadow-lg" title="Viber">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M11.398.002C9.473.028 5.331.344 3.014 2.467 1.294 4.177.693 6.698.623 9.82c-.06 3.11-.13 8.95 5.5 10.541v2.42s-.038.97.602 1.17c.79.25 1.24-.499 1.99-1.299l1.4-1.58c3.85.32 6.8-.419 7.14-.529.78-.25 5.181-.811 5.901-6.652.74-6.031-.36-9.831-2.34-11.551l-.01-.002c-.6-.55-3-2.3-8.37-2.32 0 0-.396-.025-1.038-.016zm.067 1.697c.545-.003.88.02.88.02 4.54.01 6.711 1.38 7.221 1.84 1.67 1.429 2.528 4.856 1.9 9.892-.6 4.88-4.17 5.19-4.83 5.4-.28.09-2.88.73-6.152.52 0 0-2.439 2.941-3.199 3.701-.12.13-.26.17-.35.15-.13-.03-.17-.19-.16-.41l.02-4.019c-4.771-1.32-4.491-6.302-4.441-8.902.06-2.6.55-4.732 2-6.172 1.957-1.77 5.475-2.01 7.11-2.02zm.36 2.6a.299.299 0 00-.3.299.3.3 0 00.3.3 5.631 5.631 0 014.03 1.59 5.402 5.402 0 011.68 3.989.3.3 0 00.3.3.3.3 0 00.3-.3 5.994 5.994 0 00-1.86-4.409 6.23 6.23 0 00-4.45-1.769zm-3.398.95a.843.843 0 00-.509.19c-.366.256-.73.579-1.055.885-.025.024-.037.037-.05.05a1.426 1.426 0 00-.335 1.002c.05.582.326 1.381.78 2.45.004.01.01.018.013.028.49 1.146 1.333 2.51 2.553 3.802 1.223 1.295 2.61 2.364 4.06 3.087l.02.01c1.475.715 2.673 1.029 3.532 1.09.476.033.808-.135 1.009-.346 0 0 .232-.197.581-.622.333-.406.7-.894.849-1.103a.554.554 0 00-.03-.738l-1.655-1.655c-.246-.246-.578-.2-.578-.2-.24.04-.664.32-1.029.556-.4.258-.95.466-1.302.466-.154 0-.28-.033-.379-.098-1.426-.934-2.654-1.964-3.622-2.865-.968-.9-2.014-2.114-2.964-3.538-.068-.102-.104-.232-.104-.393 0-.345.206-.89.461-1.289.233-.364.51-.786.549-1.025 0 0 .046-.332-.2-.578L9.178 5.588a.38.38 0 00-.251-.089zm3.418.95a.3.3 0 00-.3.3.3.3 0 00.3.299 3.73 3.73 0 012.65 1.05 3.56 3.56 0 011.12 2.65.3.3 0 00.3.3.3.3 0 00.3-.3 4.16 4.16 0 00-1.31-3.103 4.364 4.364 0 00-3.06-1.196zm.35 2.097a.3.3 0 00-.3.3.3.3 0 00.3.3 1.876 1.876 0 011.322.528c.352.35.556.831.556 1.33a.3.3 0 00.3.299.3.3 0 00.3-.3 2.463 2.463 0 00-.73-1.752 2.61 2.61 0 00-1.748-.705z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div
+          class="bg-[#151515] rounded-2xl p-12 flex flex-col border border-white/10"
+        >
+          <h3
+            class="text-2xl font-medium tracking-widest text-gray-100 uppercase mb-6"
+          >
+            12 MJESECI
+          </h3>
 
-            <!-- 6 Months Card -->
-            <div class="bg-[#151515] rounded-2xl p-12 flex flex-col border border-white/10">
-                <h3 class="text-2xl font-medium tracking-widest text-gray-100 uppercase mb-6">6 MJESECI</h3>
-                
-                <ul class="text-gray-400 space-y-2 mb-8 flex-grow">
-                    <li>Kvalitet 8K / 4K / Ultra HD</li>
-                    <li>Zabava, Sport, Svi premium Sportski Kanali</li>
-                    <li>Kompatibilno sa Svim Uređajima</li>
-                </ul>
-                
-                <div class="flex items-baseline gap-2 mb-8">
-                    <span class="text-7xl font-medium">€35</span>
-                    <span class="text-gray-400">/ 6 mjeseci - 2 uređaja</span>
-                </div>
-                
-                <div class="flex flex-col gap-3">
-                    <!-- Lista Kanala - Full width on mobile -->
-                    <a href="#" @click.prevent="modalOpen = true" class="bg-lime-accent text-black px-4 py-3 rounded-lg font-bold text-sm text-center hover:shadow-lg hover:shadow-lime-accent/40 transition-all hover:-translate-y-0.5 w-full">
-                        Lista kanala
-                    </a>
-                    <!-- Messaging buttons - Half width each on mobile -->
-                    <div class="grid grid-cols-2 gap-3">
-                        <a href="https://wa.me/387603008445?text=Pozdrav%2C%20Zelio%20bih%20zatražiti%20aktivaciju%2048-satnog%20testnog%20perioda." target="_blank" class="bg-[#25D366] hover:bg-[#20BA5A] text-white px-4 py-3 rounded-lg flex items-center justify-center gap-2 transition-all hover:shadow-lg font-bold text-sm" title="WhatsApp">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                            </svg>
-                            <span class="hidden sm:inline">WhatsApp</span>
-                        </a>
-                        <a href="viber://contact?number=%2B387603008445&text=Pozdrav%2C%20Zelio%20bih%20zatražiti%20aktivaciju%2048-satnog%20testnog%20perioda." target="_blank" class="bg-[#7360F2] hover:bg-[#665AC1] text-white px-4 py-3 rounded-lg flex items-center justify-center gap-2 transition-all hover:shadow-lg font-bold text-sm" title="Viber">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M11.398.002C9.473.028 5.331.344 3.014 2.467 1.294 4.177.693 6.698.623 9.82c-.06 3.11-.13 8.95 5.5 10.541v2.42s-.038.97.602 1.17c.79.25 1.24-.499 1.99-1.299l1.4-1.58c3.85.32 6.8-.419 7.14-.529.78-.25 5.181-.811 5.901-6.652.74-6.031-.36-9.831-2.34-11.551l-.01-.002c-.6-.55-3-2.3-8.37-2.32 0 0-.396-.025-1.038-.016zm.067 1.697c.545-.003.88.02.88.02 4.54.01 6.711 1.38 7.221 1.84 1.67 1.429 2.528 4.856 1.9 9.892-.6 4.88-4.17 5.19-4.83 5.4-.28.09-2.88.73-6.152.52 0 0-2.439 2.941-3.199 3.701-.12.13-.26.17-.35.15-.13-.03-.17-.19-.16-.41l.02-4.019c-4.771-1.32-4.491-6.302-4.441-8.902.06-2.6.55-4.732 2-6.172 1.957-1.77 5.475-2.01 7.11-2.02zm.36 2.6a.299.299 0 00-.3.299.3.3 0 00.3.3 5.631 5.631 0 014.03 1.59 5.402 5.402 0 011.68 3.989.3.3 0 00.3.3.3.3 0 00.3-.3 5.994 5.994 0 00-1.86-4.409 6.23 6.23 0 00-4.45-1.769zm-3.398.95a.843.843 0 00-.509.19c-.366.256-.73.579-1.055.885-.025.024-.037.037-.05.05a1.426 1.426 0 00-.335 1.002c.05.582.326 1.381.78 2.45.004.01.01.018.013.028.49 1.146 1.333 2.51 2.553 3.802 1.223 1.295 2.61 2.364 4.06 3.087l.02.01c1.475.715 2.673 1.029 3.532 1.09.476.033.808-.135 1.009-.346 0 0 .232-.197.581-.622.333-.406.7-.894.849-1.103a.554.554 0 00-.03-.738l-1.655-1.655c-.246-.246-.578-.2-.578-.2-.24.04-.664.32-1.029.556-.4.258-.95.466-1.302.466-.154 0-.28-.033-.379-.098-1.426-.934-2.654-1.964-3.622-2.865-.968-.9-2.014-2.114-2.964-3.538-.068-.102-.104-.232-.104-.393 0-.345.206-.89.461-1.289.233-.364.51-.786.549-1.025 0 0 .046-.332-.2-.578L9.178 5.588a.38.38 0 00-.251-.089zm3.418.95a.3.3 0 00-.3.3.3.3 0 00.3.299 3.73 3.73 0 012.65 1.05 3.56 3.56 0 011.12 2.65.3.3 0 00.3.3.3.3 0 00.3-.3 4.16 4.16 0 00-1.31-3.103 4.364 4.364 0 00-3.06-1.196zm.35 2.097a.3.3 0 00-.3.3.3.3 0 00.3.3 1.876 1.876 0 011.322.528c.352.35.556.831.556 1.33a.3.3 0 00.3.299.3.3 0 00.3-.3 2.463 2.463 0 00-.73-1.752 2.61 2.61 0 00-1.748-.705z"/>
-                            </svg>
-                            <span class="hidden sm:inline">Viber</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
+          <ul class="text-gray-400 space-y-2 mb-8 flex-grow">
+            <li>Kvalitet 8K / 4K / Ultra HD</li>
+            <li>1500 kanala sa 30000+ novih filmova</li>
+            <li>Sportski kanali ArenaSport, Sport Klub, X</li>
+            <li>Dokumentarni, Dječiji kanali.</li>
+          </ul>
+
+          <div class="flex items-baseline gap-2 mb-8">
+            <span class="text-7xl font-medium">€60</span>
+            <span class="text-gray-400">/ 1 godina - 2 uređaja</span>
+          </div>
+
+          <div class="flex gap-3">
+            <a
+              href="#"
+              @click.prevent="modalOpen = true"
+              class="bg-lime-accent text-black px-4 py-3 rounded-lg font-bold text-sm text-center hover:shadow-lg hover:shadow-lime-accent/40 transition-all hover:-translate-y-0.5 flex-1"
+            >
+              Lista kanala
+            </a>
+            <a
+              href="https://wa.me/387603008445?text=Pozdrav%2C%20Zelio%20bih%20zatražiti%20aktivaciju%2048-satnog%20testnog%20perioda."
+              target="_blank"
+              class="bg-[#25D366] hover:bg-[#20BA5A] text-white w-12 h-12 rounded-lg flex items-center justify-center transition-all hover:shadow-lg"
+              title="WhatsApp"
+            >
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+                />
+              </svg>
+            </a>
+            <a
+              href="viber://contact?number=%2B387603008445&text=Pozdrav%2C%20Zelio%20bih%20zatražiti%20aktivaciju%2048-satnog%20testnog%20perioda."
+              target="_blank"
+              class="bg-[#7360F2] hover:bg-[#665AC1] text-white w-12 h-12 rounded-lg flex items-center justify-center transition-all hover:shadow-lg"
+              title="Viber"
+            >
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M11.398.002C9.473.028 5.331.344 3.014 2.467 1.294 4.177.693 6.698.623 9.82c-.06 3.11-.13 8.95 5.5 10.541v2.42s-.038.97.602 1.17c.79.25 1.24-.499 1.99-1.299l1.4-1.58c3.85.32 6.8-.419 7.14-.529.78-.25 5.181-.811 5.901-6.652.74-6.031-.36-9.831-2.34-11.551l-.01-.002c-.6-.55-3-2.3-8.37-2.32 0 0-.396-.025-1.038-.016zm.067 1.697c.545-.003.88.02.88.02 4.54.01 6.711 1.38 7.221 1.84 1.67 1.429 2.528 4.856 1.9 9.892-.6 4.88-4.17 5.19-4.83 5.4-.28.09-2.88.73-6.152.52 0 0-2.439 2.941-3.199 3.701-.12.13-.26.17-.35.15-.13-.03-.17-.19-.16-.41l.02-4.019c-4.771-1.32-4.491-6.302-4.441-8.902.06-2.6.55-4.732 2-6.172 1.957-1.77 5.475-2.01 7.11-2.02zm.36 2.6a.299.299 0 00-.3.299.3.3 0 00.3.3 5.631 5.631 0 014.03 1.59 5.402 5.402 0 011.68 3.989.3.3 0 00.3.3.3.3 0 00.3-.3 5.994 5.994 0 00-1.86-4.409 6.23 6.23 0 00-4.45-1.769zm-3.398.95a.843.843 0 00-.509.19c-.366.256-.73.579-1.055.885-.025.024-.037.037-.05.05a1.426 1.426 0 00-.335 1.002c.05.582.326 1.381.78 2.45.004.01.01.018.013.028.49 1.146 1.333 2.51 2.553 3.802 1.223 1.295 2.61 2.364 4.06 3.087l.02.01c1.475.715 2.673 1.029 3.532 1.09.476.033.808-.135 1.009-.346 0 0 .232-.197.581-.622.333-.406.7-.894.849-1.103a.554.554 0 00-.03-.738l-1.655-1.655c-.246-.246-.578-.2-.578-.2-.24.04-.664.32-1.029.556-.4.258-.95.466-1.302.466-.154 0-.28-.033-.379-.098-1.426-.934-2.654-1.964-3.622-2.865-.968-.9-2.014-2.114-2.964-3.538-.068-.102-.104-.232-.104-.393 0-.345.206-.89.461-1.289.233-.364.51-.786.549-1.025 0 0 .046-.332-.2-.578L9.178 5.588a.38.38 0 00-.251-.089zm3.418.95a.3.3 0 00-.3.3.3.3 0 00.3.299 3.73 3.73 0 012.65 1.05 3.56 3.56 0 011.12 2.65.3.3 0 00.3.3.3.3 0 00.3-.3 4.16 4.16 0 00-1.31-3.103 4.364 4.364 0 00-3.06-1.196zm.35 2.097a.3.3 0 00-.3.3.3.3 0 00.3.3 1.876 1.876 0 011.322.528c.352.35.556.831.556 1.33a.3.3 0 00.3.299.3.3 0 00.3-.3 2.463 2.463 0 00-.73-1.752 2.61 2.61 0 00-1.748-.705z"
+                />
+              </svg>
+            </a>
+          </div>
         </div>
-    </section>
-</body>
 
+        <div
+          class="bg-[#151515] rounded-2xl p-12 flex flex-col border border-white/10"
+        >
+          <h3
+            class="text-2xl font-medium tracking-widest text-gray-100 uppercase mb-6"
+          >
+            6 MJESECI
+          </h3>
+
+          <ul class="text-gray-400 space-y-2 mb-8 flex-grow">
+            <li>Kvalitet 8K / 4K / Ultra HD</li>
+            <li>Zabava, Sport, Svi premium Sportski Kanali</li>
+            <li>Kompatibilno sa Svim Uređajima</li>
+          </ul>
+
+          <div class="flex items-baseline gap-2 mb-8">
+            <span class="text-7xl font-medium">€35</span>
+            <span class="text-gray-400">/ 6 mjeseci - 2 uređaja</span>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a
+              href="#"
+              @click.prevent="modalOpen = true"
+              class="bg-lime-accent text-black px-4 py-3 rounded-lg font-bold text-sm text-center hover:shadow-lg hover:shadow-lime-accent/40 transition-all hover:-translate-y-0.5 w-full sm:flex-1"
+            >
+              Lista kanala
+            </a>
+
+            <div class="grid grid-cols-2 sm:flex gap-3 sm:gap-2">
+              <a
+                href="https://wa.me/387603008445?text=Pozdrav%2C%20Zelio%20bih%20zatražiti%20aktivaciju%2048-satnog%20testnog%20perioda."
+                target="_blank"
+                class="bg-[#25D366] hover:bg-[#20BA5A] text-white px-4 py-3 sm:w-12 sm:h-12 sm:p-0 rounded-lg flex items-center justify-center gap-2 transition-all hover:shadow-lg font-bold text-sm"
+                title="WhatsApp"
+              >
+                <svg
+                  class="w-5 h-5 sm:w-6 sm:h-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+                  />
+                </svg>
+                <span class="sm:hidden">WhatsApp</span>
+              </a>
+              <a
+                href="viber://contact?number=%2B387603008445&text=Pozdrav%2C%20Zelio%20bih%20zatražiti%20aktivaciju%2048-satnog%20testnog%20perioda."
+                target="_blank"
+                class="bg-[#7360F2] hover:bg-[#665AC1] text-white px-4 py-3 sm:w-12 sm:h-12 sm:p-0 rounded-lg flex items-center justify-center gap-2 transition-all hover:shadow-lg font-bold text-sm"
+                title="Viber"
+              >
+                <svg
+                  class="w-5 h-5 sm:w-6 sm:h-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M11.398.002C9.473.028 5.331.344 3.014 2.467 1.294 4.177.693 6.698.623 9.82c-.06 3.11-.13 8.95 5.5 10.541v2.42s-.038.97.602 1.17c.79.25 1.24-.499 1.99-1.299l1.4-1.58c3.85.32 6.8-.419 7.14-.529.78-.25 5.181-.811 5.901-6.652.74-6.031-.36-9.831-2.34-11.551l-.01-.002c-.6-.55-3-2.3-8.37-2.32 0 0-.396-.025-1.038-.016zm.067 1.697c.545-.003.88.02.88.02 4.54.01 6.711 1.38 7.221 1.84 1.67 1.429 2.528 4.856 1.9 9.892-.6 4.88-4.17 5.19-4.83 5.4-.28.09-2.88.73-6.152.52 0 0-2.439 2.941-3.199 3.701-.12.13-.26.17-.35.15-.13-.03-.17-.19-.16-.41l.02-4.019c-4.771-1.32-4.491-6.302-4.441-8.902.06-2.6.55-4.732 2-6.172 1.957-1.77 5.475-2.01 7.11-2.02zm.36 2.6a.299.299 0 00-.3.299.3.3 0 00.3.3 5.631 5.631 0 014.03 1.59 5.402 5.402 0 011.68 3.989.3.3 0 00.3.3.3.3 0 00.3-.3 5.994 5.994 0 00-1.86-4.409 6.23 6.23 0 00-4.45-1.769zm-3.398.95a.843.843 0 00-.509.19c-.366.256-.73.579-1.055.885-.025.024-.037.037-.05.05a1.426 1.426 0 00-.335 1.002c.05.582.326 1.381.78 2.45.004.01.01.018.013.028.49 1.146 1.333 2.51 2.553 3.802 1.223 1.295 2.61 2.364 4.06 3.087l.02.01c1.475.715 2.673 1.029 3.532 1.09.476.033.808-.135 1.009-.346 0 0 .232-.197.581-.622.333-.406.7-.894.849-1.103a.554.554 0 00-.03-.738l-1.655-1.655c-.246-.246-.578-.2-.578-.2-.24.04-.664.32-1.029.556-.4.258-.95.466-1.302.466-.154 0-.28-.033-.379-.098-1.426-.934-2.654-1.964-3.622-2.865-.968-.9-2.014-2.114-2.964-3.538-.068-.102-.104-.232-.104-.393 0-.345.206-.89.461-1.289.233-.364.51-.786.549-1.025 0 0 .046-.332-.2-.578L9.178 5.588a.38.38 0 00-.251-.089zm3.418.95a.3.3 0 00-.3.3.3.3 0 00.3.299 3.73 3.73 0 012.65 1.05 3.56 3.56 0 011.12 2.65.3.3 0 00.3.3.3.3 0 00.3-.3 4.16 4.16 0 00-1.31-3.103 4.364 4.364 0 00-3.06-1.196zm.35 2.097a.3.3 0 00-.3.3.3.3 0 00.3.3 1.876 1.876 0 011.322.528c.352.35.556.831.556 1.33a.3.3 0 00.3.299.3.3 0 00.3-.3 2.463 2.463 0 00-.73-1.752 2.61 2.61 0 00-1.748-.705z"
+                  />
+                </svg>
+                <span class="sm:hidden">Viber</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>
